@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const input = document.querySelector("#input");
   const button = document.querySelector("button");
   const result = document.querySelector("#result");
-
+  let timerID = null;
   input.addEventListener("keyup", function(e) {
     if (e.keyCode === 13) {
       e.preventDefault();
@@ -21,6 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   const clear = () => {
+    clearTimeout(timerID);
     input.value = "";
     input.classList.remove("error");
     result.textContent = "";
@@ -58,7 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
       row.classList.remove("hidden");
     }, 10);
     count++;
-    count < n && setTimeout(() => showResult(n, count), 3000);
+    timerID = count < n && setTimeout(() => showResult(n, count), 3000);
   };
 
   button.addEventListener("click", e => {
