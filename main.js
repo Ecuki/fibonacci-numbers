@@ -27,15 +27,18 @@ window.addEventListener("DOMContentLoaded", () => {
     result.textContent = "";
   };
 
-  function fibonacci(num, memo) {
-    memo = memo || {};
-
-    if (memo[num]) return memo[num];
-    if (num <= 0) return 0;
-    if (num <= 1) return 1;
-
-    return (memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo));
-  }
+  const fibonacci = n => {
+    let x = 0,
+      y = 1;
+    if (n <= 1) return n;
+    if (n <= 2) return n - 1;
+    for (let i = 0; i < n; i++) {
+      let tempY = y;
+      y = tempY + x;
+      x = tempY;
+    }
+    return y;
+  };
 
   const createRow = n => {
     const row = document.createElement("div");
