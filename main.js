@@ -58,9 +58,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const row = createRow(count);
     result.appendChild(row);
     result.scrollTop = result.scrollHeight;
-    setTimeout(() => {
-      row.classList.remove("hidden");
-    }, 0);
+    row.classList.remove("hidden");
     count++;
     timerID = count < n && setTimeout(() => showResult(n, count), 3000);
   };
